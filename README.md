@@ -11,7 +11,7 @@ A [Drush make file](http://drush.ws/docs/make.txt) that automates the cloning of
 
 ## Usage
 
-Run this from within the your Islandora sites/default or sites/all directory, whichever you prefer:
+Copy islandora.drush.make into your Islandora sites/default or sites/all directory, whichever you prefer, and then run the following command:
 
 ```
 drush make --yes --no-core --contrib-destination=. islandora.drush.make

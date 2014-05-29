@@ -59,5 +59,5 @@ projects[php_lib][download][url] = "git@github.com:Islandora/php_lib.git"
 
 libraries[tuque][download][type] = "git"
 libraries[tuque][download][overwrite] = TRUE
-libraries[tuque][download][branch] = "1.3"
+libraries[tuque][download][branch] = "1.x"
 libraries[tuque][download][url] = "git@github.com:Islandora/tuque.git"

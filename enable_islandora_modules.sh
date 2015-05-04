@@ -3,10 +3,12 @@
 # Run this after running drush make --yes --no-core --contrib-destination=. islandora.drush.make
 # to install all the modules downloaded by that file.
 
+# A good idea.. but https://jira.duraspace.org/browse/ISLANDORA-820 prevents this script from working.
+
 MAKEFILE=$1
 
 # Extract all the module names from the islandora makefile.
 MODULES=$(grep -v "^;" $MAKEFILE | grep -oh "projects\[[A-Za-z_]*\]" | sed "s/projects\[//" | sed "s/\]/ /" | tr -d '\n')
 
 # Just echo for now, don't actually run it (pending testing).
-echo "drush -yes en $MODULES"
+echo "drush --yes en $MODULES"

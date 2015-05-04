@@ -6,7 +6,7 @@
 MAKEFILE=$1
 
 # Extract all the module names from the islandora makefile.
-MODULES=$(grep -oh "projects\[[A-Za-z_]*\]" $MAKEFILE | sed "s/projects\[//" | sed "s/\]/ /" | tr -d '\n')
+MODULES=$(grep -v "^;" $MAKEFILE | grep -oh "projects\[[A-Za-z_]*\]" | sed "s/projects\[//" | sed "s/\]/ /" | tr -d '\n')
 
 # Just echo for now, don't actually run it (pending testing).
 echo "drush -yes $MODULES"

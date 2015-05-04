@@ -9,4 +9,4 @@ MAKEFILE=$1
 MODULES=$(grep -v "^;" $MAKEFILE | grep -oh "projects\[[A-Za-z_]*\]" | sed "s/projects\[//" | sed "s/\]/ /" | tr -d '\n')
 
 # Just echo for now, don't actually run it (pending testing).
-echo "drush -yes $MODULES"
+echo "drush -yes en $MODULES"

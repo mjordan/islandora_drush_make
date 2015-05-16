@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A [Drush make file](http://drush.ws/docs/make.txt) that automates the cloning of code from the official Islandora Git repo at https://github.com/Islandora. Drush make files only install modules/libraries/themes, they do not enable them or download any external dependencies they may have.
+A [Drush make file](http://drush.ws/docs/make.txt) that automates the cloning of code from the official Islandora Git repo at https://github.com/Islandora. Drush make files only install modules/libraries/themes, they do not enable them or download any external dependencies they may have. However, a utility included in this repo, enable_islandora_modules.sh, will parse the makefile and enable all modules it has cloned.
 
 ## Requirements
 
@@ -22,6 +22,12 @@ This command will clone the HEAD branch (in most cases, 7.x) of all of the modul
 You can also rerun this command to bring all of your modules up to date with HEAD.
 
 If you don't want to install a module, simply comment out its line in the make file with a semicolon.
+
+To enable the modules cloned by the makefile, run:
+
+```
+./enable_islandora_modules.sh /path/to/islandora.drush.make /path/to/your/modules/directory
+```
 
 ## Troubleshooting/Issues
 

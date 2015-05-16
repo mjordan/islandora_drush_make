@@ -3,6 +3,9 @@
 # Run this after running drush make --yes --no-core --contrib-destination=. islandora.drush.make
 # to install all the modules downloaded by that file.
 
+# Usage:
+# ./enable_islandora_modules.sh /path/to/islandora.drush.make /path/to/your/modules/directory
+
 # The path to the islandora.drush.make file.
 MAKEFILE=$1
 # The absolute path to the destination sites/all/modules or sites/default/modules that
@@ -21,9 +24,8 @@ do
   INFOFILES=$(find $MODULEPATH -name '*.info' -exec basename {} \;)
   for INFOFILE in $INFOFILES
   do
-    # Remove the .info extension.
+    # Remove the .info extension and hand off the .info file basename to drush to enable.
     INFOFILE=$(echo $INFOFILE | sed "s/\.info$//")
-    # Just echo for now, don't actually run it (pending testing).
-    echo "drush --yes en $INFOFILE"
+    drush --yes en $INFOFILE
   done
 done

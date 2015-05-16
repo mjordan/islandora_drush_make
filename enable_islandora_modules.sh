@@ -3,12 +3,27 @@
 # Run this after running drush make --yes --no-core --contrib-destination=. islandora.drush.make
 # to install all the modules downloaded by that file.
 
-# A good idea.. but https://jira.duraspace.org/browse/ISLANDORA-820 prevents this script from working.
-
+# The path to the islandora.drush.make file.
 MAKEFILE=$1
+# The absolute path to the destination sites/all/modules or sites/default/modules that
+# drush make cloned the module repos into.
+DESTDIR=$2
 
-# Extract all the module names from the islandora makefile.
+# Extract all the module directory names from the islandora makefile.
 MODULES=$(grep -v "^;" $MAKEFILE | grep -oh "projects\[[A-Za-z_]*\]" | sed "s/projects\[//" | sed "s/\]/ /" | tr -d '\n')
 
-# Just echo for now, don't actually run it (pending testing).
-echo "drush --yes en $MODULES"
+# Loop through all the modules cloned by the drush makefile.
+for MODULE in $MODULES
+do
+  # Get the module's full path.
+  MODULEPATH=$DESTDIR/$MODULE
+  # For each module, find all its .info files (there could be more than one).
+  INFOFILES=$(find $MODULEPATH -name '*.info' -exec basename {} \;)
+  for INFOFILE in $INFOFILES
+  do
+    # Remove the .info extension.
+    INFOFILE=$(echo $INFOFILE | sed "s/\.info$//")
+    # Just echo for now, don't actually run it (pending testing).
+    echo "drush --yes en $INFOFILE"
+  done
+done

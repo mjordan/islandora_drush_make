@@ -17,9 +17,7 @@ Copy islandora.drush.make into your Islandora sites/default or sites/all directo
 drush make --yes --no-core --contrib-destination=. islandora.drush.make
 ```
 
-This command will clone the HEAD branch (in most cases, 7.x) of all of the modules and libraries it lists. You must enable the modules via your site's Modules page or using drush (e.g., ```drush en islandora_batch```). You should consult the README file for each module before enabling so you are aware of any important installation and configuration instructions.
-
-You can also rerun this command to bring all of your modules up to date with HEAD.
+This command will clone the HEAD branch (in most cases, 7.x) of all of the modules and libraries it lists. You can also rerun this command to bring all of your modules up to date with HEAD.
 
 If you don't want to install a module, simply comment out its line in the make file with a semicolon.
 
@@ -28,6 +26,8 @@ To enable the modules cloned by the makefile, run:
 ```
 ./enable_islandora_modules.sh /path/to/islandora.drush.make /path/to/your/modules/directory
 ```
+
+If you don't want to enable all the modules, you can enable individual modules via your site's Modules page or using drush (e.g., ```drush en islandora_batch```). Whether you use this script to enable modules or enable them manually, you should consult the README file for each module before enabling so you are aware of any important installation and configuration instructions.
 
 ## Troubleshooting/Issues
 

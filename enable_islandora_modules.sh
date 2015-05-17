@@ -29,3 +29,6 @@ do
     drush --yes en $INFOFILE
   done
 done
+
+# We don't want this module enabled.
+drush --yes dis islandora_ingest_test
